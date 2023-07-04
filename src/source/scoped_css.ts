@@ -173,6 +173,7 @@ class CSSParser {
 
     return this.keyframesRule() ||
       this.mediaRule() ||
+      this.containerRule() ||
       this.customMediaRule() ||
       this.supportsRule() ||
       this.importRule() ||
@@ -253,6 +254,7 @@ class CSSParser {
 
   // https://developer.mozilla.org/en-US/docs/Web/API/CSSMediaRule
   private mediaRule = this.createMatcherForAtRuleWithChildRule(/^@media *([^{]+)/, 'media')
+  private containerRule = this.createMatcherForAtRuleWithChildRule(/^@container *([^{]+)/, 'container')
   // https://developer.mozilla.org/en-US/docs/Web/API/CSSSupportsRule
   private supportsRule = this.createMatcherForAtRuleWithChildRule(/^@supports *([^{]+)/, 'supports')
   private documentRule = this.createMatcherForAtRuleWithChildRule(/^@([-\w]+)?document *([^{]+)/, 'document')
